@@ -2,6 +2,37 @@
 
 A collection of Docker Compose configurations for various applications and services.
 
+## Quick Start
+
+Use the provided script to easily manage services:
+
+```bash
+./run-service.sh <service-name> [action]
+```
+
+Examples:
+
+```bash
+# Start a service (detached mode by default)
+./run-service.sh postgres-db
+./run-service.sh n8n up -d
+
+# View logs
+./run-service.sh localstack logs -f
+
+# Stop a service
+./run-service.sh ollama-chat-ui down
+
+# Stop and remove volumes
+./run-service.sh postgres-db down -v
+```
+
+Run without arguments to see all available services and actions:
+
+```bash
+./run-service.sh
+```
+
 ## Available Configurations
 
 ### LocalStack

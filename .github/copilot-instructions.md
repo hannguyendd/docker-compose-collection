@@ -38,6 +38,14 @@ docker compose -f <service>/<service>.yaml -p <service> up
 
 Example: `docker compose -f postgres-db/postgres-db.yaml -p postgres-db up -d`
 
+**Convenience Script**: The root directory includes `run-service.sh` for easier service management:
+
+```bash
+./run-service.sh <service-name> [action]
+```
+
+Examples: `./run-service.sh postgres-db up -d`, `./run-service.sh n8n logs -f`
+
 ### Environment Configuration
 
 - All `.env` files are gitignored
@@ -104,6 +112,35 @@ When adding a new service:
 - Volume name is project-specific: `postgres-db-for-optimization-course`
 - Always uses `restart: always` policy
 
+## Helper Scripts
+
+### run-service.sh
+
+A convenience script located at the root of the repository for easy service management:
+
+- Automatically selects the correct compose file for each service
+- Handles the milvus special case (uses standalone.yml instead of .yaml)
+- Provides color-coded output and helpful messages
+- Validates service names before execution
+- Default action is `up -d` if no action specified
+
+Usage:
+
+```bash
+./run-service.sh <service-name> [action]
+```
+
+Common commands:
+
+```bash
+./run-service.sh postgres-db              # Start (detached mode)
+./run-service.sh n8n up -d                # Start detached
+./run-service.sh localstack logs -f       # Follow logs
+./run-service.sh ollama-chat-ui down      # Stop service
+./run-service.sh postgres-db down -v      # Stop and remove volumes
+./run-service.sh                          # Show help
+```
+
 ## Testing Changes
 
 Test compose files with:
@@ -112,4 +149,11 @@ Test compose files with:
 docker compose -f <path> config          # Validate syntax
 docker compose -f <path> -p test up -d   # Start detached
 docker compose -f <path> -p test down    # Clean up
+```
+
+Or use the convenience script:
+
+```bash
+./run-service.sh <service> up -d         # Start service
+./run-service.sh <service> down          # Stop service
 ```
