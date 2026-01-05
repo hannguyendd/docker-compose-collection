@@ -1,0 +1,22 @@
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    ports:
+      - "${HOST_PORT:-4566}:4566" # LocalStack Gateway
+      - "${HOST_PORT_INTERNAL:-4510-4559}:4510-4559" # External services port range
+    environment:
+      - SERVICES=${SERVICES:-}
+      - DEBUG=${DEBUG:-0}
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-test}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-test}
+    volumes:
+      - localstack_data:/tmp/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+volumes:
+  localstack_data:
