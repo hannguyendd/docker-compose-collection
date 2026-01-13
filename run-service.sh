@@ -15,6 +15,7 @@ NC='\033[0m' # No Color
 
 # Available services
 SERVICES=(
+    "influxdb3"
     "localstack"
     "milvus"
     "n8n"

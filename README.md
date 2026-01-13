@@ -35,6 +35,11 @@ Run without arguments to see all available services and actions:
 
 ## Available Configurations
 
+### InfluxDB 3
+
+InfluxDB 3 Core time-series database with official UI for exploration.
+[View Details](influxdb3/README.md)
+
 ### LocalStack
 
 Fully functional local AWS cloud stack for developing and testing cloud & serverless applications offline.
@@ -83,6 +88,9 @@ docker compose -f ollama-chat-ui/ollama-chat-ui.yaml -p ollama-chat-ui up
 .
 ├── .gitignore
 ├── README.md
+├── influxdb3/
+│   ├── influxdb3.yaml
+│   └── README.md
 ├── localstack/
 │   ├── localstack.yaml
 │   └── README.md
