@@ -20,11 +20,14 @@ services:
     container_name: influxdb3-ui
     restart: unless-stopped
     ports:
-      - "${INFLUXDB_UI_PORT:-8282}:3000"
+      - "${INFLUXDB_UI_PORT:-8282}:80"
+      - "${INFLUXDB_UI_INTERNAL_PORT:-8283}:8888"
     environment:
       INFLUXDB3_HOST: http://influxdb3:8181
     depends_on:
       - influxdb3
+    command:
+      - --mode=admin
 
 volumes:
   influxdb3_data:

@@ -25,7 +25,8 @@ docker compose -f influxdb3/influxdb3.yaml -p influxdb3 up -d
 |----------|---------|-------------|
 | `INFLUXDB_PORT` | 8181 | InfluxDB HTTP API port |
 | `INFLUXDB3_NODE_ID` | node0 | Node identifier for InfluxDB |
-| `INFLUXDB_UI_PORT` | 8282 | InfluxDB 3 UI port |
+| `INFLUXDB_UI_PORT` | 8282 | InfluxDB 3 UI web interface port |
+| `INFLUXDB_UI_INTERNAL_PORT` | 8283 | InfluxDB 3 UI internal service port |
 
 ## Access
 

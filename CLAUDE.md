@@ -47,7 +47,7 @@ Exception: Milvus uses `standalone.yml` instead of `.yaml`.
 
 | Service | Port | Notes |
 |---------|------|-------|
-| influxdb3 | 8181, 8282 | InfluxDB 3 time-series DB with official UI |
+| influxdb3 | 8181, 8282, 8283 | InfluxDB 3 time-series DB with Explorer UI (admin mode) |
 | localstack | 4566 | Local AWS cloud stack |
 | milvus | 19530 | Vector database (multi-container: etcd, MinIO, Milvus) |
 | n8n | 5678 | Workflow automation with PostgreSQL backend (postgres on 5433) |
