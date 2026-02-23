@@ -8,13 +8,14 @@ services:
     environment:
       - SERVICES=${SERVICES:-}
       - DEBUG=${DEBUG:-0}
-      - DATA_DIR=/tmp/localstack/data
+      - PERSISTENCE=1
+      - LOCALSTACK_VOLUME_DIR=/var/lib/localstack
       - DOCKER_HOST=unix:///var/run/docker.sock
       - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-test}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-test}
     volumes:
-      - localstack_data:/tmp/localstack
+      - localstack_data:/var/lib/localstack
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
