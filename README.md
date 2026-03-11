@@ -55,6 +55,11 @@ N8N workflow automation platform with PostgreSQL database.
 Web interface for interacting with Ollama language models.
 [View Details](ollama-chat-ui/README.md)
 
+### OpenSearch
+
+OpenSearch search and analytics suite with OpenSearch Dashboards.
+[View Details](opensearch/README.md)
+
 ### PostgreSQL Database
 
 PostgreSQL database instance with configurable settings.

@@ -1,0 +1,43 @@
+services:
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch
+    restart: always
+    ports:
+      - "${OPENSEARCH_PORT:-9200}:9200"
+      - "${OPENSEARCH_PERF_PORT:-9600}:9600"
+    environment:
+      discovery.type: single-node
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD:-MyStr0ng!Pass}
+      OPENSEARCH_JAVA_OPTS: ${OPENSEARCH_JAVA_OPTS:--Xms512m -Xmx512m}
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: opensearch-dashboards
+    restart: always
+    ports:
+      - "${OPENSEARCH_DASHBOARDS_PORT:-5601}:5601"
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: ${DISABLE_SECURITY_DASHBOARDS_PLUGIN:-false}
+      # Connect to multiple OpenSearch clusters from one Dashboards instance
+      data_source.enabled: "true"
+      # Isolated workspaces for teams/projects (separate dashboards, visualizations, index patterns)
+      workspace.enabled: "true"
+      # Enhanced log exploration UI for browsing and querying data
+      explore.enabled: "true"
+    depends_on:
+      - opensearch
+
+volumes:
+  opensearch_data:
+    name: opensearch_data
