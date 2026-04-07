@@ -70,6 +70,11 @@ Vectorless, reasoning-based RAG service using PageIndex. Transforms documents in
 PostgreSQL database instance with configurable settings.
 [View Details](postgres-db/README.md)
 
+### Redis Stack
+
+Redis with built-in modules (RedisSearch, RedisJSON, RedisGraph, RedisTimeSeries, RedisBloom) and RedisInsight UI.
+[View Details](redis/README.md)
+
 ## Usage
 
 Each service has its own directory containing:
@@ -118,8 +123,11 @@ docker compose -f ollama-chat-ui/ollama-chat-ui.yaml -p ollama-chat-ui up
 │   ├── Dockerfile
 │   ├── server.py
 │   └── README.md
-└── postgres-db/
-    ├── postgres-db.yaml
+├── postgres-db/
+│   ├── postgres-db.yaml
+│   └── README.md
+└── redis/
+    ├── redis.yaml
     └── README.md
 ```
 

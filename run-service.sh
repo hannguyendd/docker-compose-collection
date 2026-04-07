@@ -23,6 +23,7 @@ SERVICES=(
     "opensearch"
     "pageindex"
     "postgres-db"
+    "redis"
 )
 
 # Function to display usage
