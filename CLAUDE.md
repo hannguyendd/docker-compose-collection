@@ -53,6 +53,7 @@ Exception: Milvus uses `standalone.yml` instead of `.yaml`.
 | n8n | 5678 | Workflow automation with PostgreSQL backend (postgres on 5433) |
 | ollama-chat-ui | 8801 | Open WebUI for Ollama (requires host Ollama) |
 | opensearch | 9200, 9600, 5601 | OpenSearch search/analytics with Dashboards UI |
+| pageindex | 8090 | Vectorless reasoning-based RAG with FastAPI (requires OpenAI key) |
 | postgres-db | 5432 | PostgreSQL instance |
 
 ## Conventions

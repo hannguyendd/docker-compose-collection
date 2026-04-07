@@ -60,6 +60,11 @@ Web interface for interacting with Ollama language models.
 OpenSearch search and analytics suite with OpenSearch Dashboards.
 [View Details](opensearch/README.md)
 
+### PageIndex for RAG
+
+Vectorless, reasoning-based RAG service using PageIndex. Transforms documents into tree-structured indexes for LLM retrieval without vector databases.
+[View Details](pageindex/README.md)
+
 ### PostgreSQL Database
 
 PostgreSQL database instance with configurable settings.
@@ -104,6 +109,14 @@ docker compose -f ollama-chat-ui/ollama-chat-ui.yaml -p ollama-chat-ui up
 │   └── README.md
 ├── ollama-chat-ui/
 │   ├── ollama-chat-ui.yaml
+│   └── README.md
+├── opensearch/
+│   ├── opensearch.yaml
+│   └── README.md
+├── pageindex/
+│   ├── pageindex.yaml
+│   ├── Dockerfile
+│   ├── server.py
 │   └── README.md
 └── postgres-db/
     ├── postgres-db.yaml

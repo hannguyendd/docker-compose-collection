@@ -1,0 +1,28 @@
+services:
+  pageindex:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pageindex
+    ports:
+      - "${PAGEINDEX_PORT:-8090}:8090"
+    environment:
+      - CHATGPT_API_KEY=${CHATGPT_API_KEY}
+      - PAGEINDEX_MODEL=${PAGEINDEX_MODEL:-gpt-4o}
+      - PAGEINDEX_TOC_CHECK_PAGES=${PAGEINDEX_TOC_CHECK_PAGES:-20}
+      - PAGEINDEX_MAX_PAGES_PER_NODE=${PAGEINDEX_MAX_PAGES_PER_NODE:-10}
+      - PAGEINDEX_MAX_TOKENS_PER_NODE=${PAGEINDEX_MAX_TOKENS_PER_NODE:-20000}
+    volumes:
+      - pageindex_data:/app/data
+      - ./documents:/app/documents
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  pageindex_data:
+    name: pageindex_data

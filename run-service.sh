@@ -20,6 +20,8 @@ SERVICES=(
     "milvus"
     "n8n"
     "ollama-chat-ui"
+    "opensearch"
+    "pageindex"
     "postgres-db"
 )
 
